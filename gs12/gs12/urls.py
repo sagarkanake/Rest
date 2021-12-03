@@ -1,4 +1,4 @@
-"""gs12 URL Configuration
+"""gs11 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from api import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^studentapi/', views.StudentAPI.as_view()),
+    url(r'^student/(?P<pk>\d+)/', views.StudentAPI.as_view()),
+    
 ]
