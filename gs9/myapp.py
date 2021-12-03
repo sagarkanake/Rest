@@ -9,28 +9,34 @@ def get_data(id = None):
     if id is not None:
         data = {'id' : id}
     json_data = json.dumps(data)
-    r = requests.get(url = URL, data = json_data)
+    headers = {'content-Type': 'application/json'}
+    
+    r = requests.get(url = URL, headers = headers, data = json_data)
+    data = r.json()
     print(data)   
-#get_data()
+#get_data(2)
+
+     
 
 def post_data():
     data = {
-        'name' : 'Munna',
-        'roll' : 105,
-        'city' : 'Mumbai'
+        'id' : 1,
+        'name' : 'ganesh',
+        'roll' : 113,
+        'city' : 'Pune'
     }
-    json_data = json.dumps(data)
     headers = {'content-Type': 'application/json'}
-    r = requests.post(url = URL, headers = headers, data = json_data)
+    json_data = json.dumps(data)
+    r = requests.post(url = URL, headers = headers,  data = json_data)
     data = r.json()
     print(data)
 post_data()
 
 def partial():
     data = {
-        'id' : 3,
-        'name' : 'Ram',
-        'city' : 'Ranchi'
+        'id' : 12,
+        'name' : 'ganesh',
+        'roll' : 112,
     }
     json_data = json.dumps(data)
     r = requests.put(url = URL, data = json_data)
@@ -44,7 +50,7 @@ def put():
     data = {
         'id'  : 6,
         'name' : 'Ravina',
-        'roll' : 103,
+        'roll' : 104,
         'city' : 'Nashik',
         
         
@@ -58,7 +64,7 @@ def put():
 
 
 def delete_data():
-    data = {'id' : 3 }
+    data = {'id' : 12}
     json_data = json.dumps(data)
     r = requests.delete(url = URL, data = json_data)
     data = r.json()
