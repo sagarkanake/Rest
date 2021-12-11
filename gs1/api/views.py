@@ -9,6 +9,10 @@ from django.http import HttpResponse, JsonResponse
 
 # Model Object - Single Student Data
 def student_detail(request, pk):
+    print(type(pk))
+    
+    
+    
     stu = Student.objects.get(id = pk)
     #print(stu)
     serializer = StudentSerializers(stu)
